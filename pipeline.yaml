@@ -14,7 +14,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      echo $(isMasterBuild)
-      echo $(isHotfix)
-      echo $(pushToOctopus)
+      echo isMasterBuild - $(isMasterBuild)
+      echo isHotfix - $(isHotfix)
+      echo pushToOctopus - $(pushToOctopus)
       
