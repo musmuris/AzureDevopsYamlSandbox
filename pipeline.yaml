@@ -11,7 +11,7 @@ variables:
   doesThisWork: $[or(false,variables['isHotfix'])]
   isMasterBuildCT: ${{in(variables['Build.SourceBranchName'], 'master', 'azure-pipelines')}}
   isHotfixCT: ${{startsWith(variables['Build.SourceBranchName'], 'hotfix')}}
-  pushToOctopusCT: ${{or(variables['isMasterBuild'],variables['isHotfix'])}]
+  pushToOctopusCT: ${{or(variables['isMasterBuild'],variables['isHotfix'])}}
   
   
 steps:
