@@ -1,0 +1,20 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables: 
+  isMasterBuild: $[in(variables['Build.SourceBranchName'], 'master', 'azure-pipelines')]
+  isHotfix: $[startsWith(variables['Build.SourceBranchName'], 'hotfix')]
+  pushToOctopus: $[or(variables['isMasterBuild'],variables['isHotfix'])]
+  
+  steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo $(isMasterBuild)
+      echo $(isHotfix)
+      echo $(pushToOctopus)
+      
