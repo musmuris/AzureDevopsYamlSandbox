@@ -29,7 +29,7 @@ steps:
   inputs:
     targetType: inline
     script: |
-      echo "${{ convertToJson(varioables) }}" 
+      echo "${{ convertToJson(variables) }}" 
       
 - task: Bash@3
   condition: ${{variables.pushToOctopusCT}}
