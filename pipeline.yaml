@@ -25,12 +25,11 @@ steps:
       echo doesThisWork - $(doesThisWork)
       echo pushToOctopusCT - $(pushToOctopusCT) 
 
-#- task: Bash@3
-#  condition: $(variables.pushToOctopus)
-#  inputs:
-#    targetType: 'inline'
-#    script: |      
-#      echo pushToOctopus - $(pushToOctopus)      
+- task: Bash@3
+  inputs:
+    targetType: inline
+    script: |
+      echo "${{ convertToJson(varioables) }}" 
       
 - task: Bash@3
   condition: ${{variables.pushToOctopusCT}}
