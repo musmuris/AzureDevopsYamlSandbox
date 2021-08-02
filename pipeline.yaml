@@ -9,6 +9,10 @@ variables:
   isHotfix: $[startsWith(variables['Build.SourceBranchName'], 'hotfix')]
   pushToOctopus: $[or(variables['isMasterBuild'],variables['isHotfix'])]
   doesThisWork: $[or(false,variables['isHotfix'])]
+  isMasterBuildCT: ${{in(variables['Build.SourceBranchName'], 'master', 'azure-pipelines')}}
+  isHotfixCT: ${{startsWith(variables['Build.SourceBranchName'], 'hotfix')}}
+  pushToOctopusCT: ${{or(variables['isMasterBuild'],variables['isHotfix'])}]
+  
   
 steps:
 - task: Bash@3
@@ -19,3 +23,17 @@ steps:
       echo isHotfix - $(isHotfix)
       echo pushToOctopus - $(pushToOctopus)
       echo doesThisWork - $(doesThisWork)
+
+- task: Bash@3
+  condition: $(variables.pushToOctopus)
+  inputs:
+    targetType: 'inline'
+    script: |      
+      echo pushToOctopus - $(pushToOctopus)      
+      
+- task: Bash@3
+  condition: ${{variables.pushToOctopusCT}}
+  inputs:
+    targetType: 'inline'
+    script: |      
+      echo pushToOctopus - $(pushToOctopus) 
