@@ -8,6 +8,7 @@ variables:
   isMasterBuild: $[in(variables['Build.SourceBranchName'], 'master', 'azure-pipelines')]
   isHotfix: $[startsWith(variables['Build.SourceBranchName'], 'hotfix')]
   pushToOctopus: $[or(variables['isMasterBuild'],variables['isHotfix'])]
+  doesThisWork: $[or(false,variables['isHotfix'])]
   
 steps:
 - task: Bash@3
@@ -17,4 +18,4 @@ steps:
       echo isMasterBuild - $(isMasterBuild)
       echo isHotfix - $(isHotfix)
       echo pushToOctopus - $(pushToOctopus)
-      
+      echo doesThisWork - $(doesThisWork)
