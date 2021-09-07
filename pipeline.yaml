@@ -5,9 +5,9 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- script: date
+- script: date /t
 
 - powershell: Set-Culture -CultureInfo en-GB
 
-- script: date
+- script: date /t
 
