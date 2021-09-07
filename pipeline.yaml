@@ -13,4 +13,9 @@ steps:
     echo foo > "Foo\Bar Baz\foo2.txt"
     echo foo > "Foo\Bar Baz\foo2 bazzy.txt"
     dir /s Foo
+    7z a Foo.zip Foo
+    mkdir Ex
+    cd Ex
+    7z x ..\Foo.zip
+    dir /s 
 
