@@ -4,36 +4,6 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-variables: 
-  isMasterBuild: $[in(variables['Build.SourceBranchName'], 'master', 'azure-pipelines')]
-  isHotfix: $[startsWith(variables['Build.SourceBranchName'], 'hotfix')]
-  pushToOctopus: $[or(variables['isMasterBuild'],variables['isHotfix'])]
-  doesThisWork: $[or(false,variables['isHotfix'])]
-  isMasterBuildCT: ${{in(variables['Build.SourceBranchName'], 'master', 'azure-pipelines')}}
-  isHotfixCT: ${{startsWith(variables['Build.SourceBranchName'], 'hotfix')}}
-  pushToOctopusCT: ${{or(variables['isMasterBuildCT'],variables['isHotfixCT'])}}
-  
-  
 steps:
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      echo isMasterBuild - $(isMasterBuild)
-      echo isHotfix - $(isHotfix)
-      echo pushToOctopus - $(pushToOctopus)
-      echo doesThisWork - $(doesThisWork)
-      echo pushToOctopusCT - $(pushToOctopusCT) 
-
-- task: Bash@3
-  inputs:
-    targetType: inline
-    script: |
-      echo "${{ convertToJson(variables) }}" 
-      
-- task: Bash@3
-  condition: ${{variables.pushToOctopusCT}}
-  inputs:
-    targetType: 'inline'
-    script: |      
-      echo pushToOctopusCT - $(pushToOctopusCT) 
+-script: dir /s 
+  
