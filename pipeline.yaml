@@ -5,17 +5,9 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- script: |
-    mkdir Foo
-    mkdir Foo\Bar
-    mkdir "Foo\Bar Baz"
-    echo foo > "Foo\Bar\foo.txt"
-    echo foo > "Foo\Bar Baz\foo2.txt"
-    echo foo > "Foo\Bar Baz\foo2 bazzy.txt"
-    dir /s Foo
-    7z a Foo.zip Foo
-    mkdir Ex
-    cd Ex
-    7z x ..\Foo.zip
-    dir /s 
+- script: date
+
+- powershell: Set-Culture -CultureInfo en-GB
+
+- script: date
 
