@@ -5,5 +5,5 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
--script: dir /s 
+- script: dir /s 
   
